@@ -395,7 +395,13 @@
 "Assets/Extra Assets/Standard Assets/Utility/WaypointCircuit.cs"
 "Assets/Extra Assets/Standard Assets/Utility/WaypointProgressTracker.cs"
 "Assets/Scripts/ClickToMove.cs"
+"Assets/Scripts/Cover.cs"
+"Assets/Scripts/CoverType.cs"
+"Assets/Scripts/EnemyFireTeam.cs"
 "Assets/Scripts/FireTeam.cs"
+"Assets/Scripts/FireTeamHealth.cs"
+"Assets/Scripts/KillTeam.cs"
+"Assets/Scripts/SelectFireTeam.cs"
 "Assets/Scripts/Soldier.cs"
 -langversion:9.0
 

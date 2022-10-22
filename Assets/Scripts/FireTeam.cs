@@ -1,73 +1,90 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
+using static UnityEngine.GraphicsBuffer;
 
-[RequireComponent(typeof(Rigidbody))]
-//[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(ClickToMove))]
+[RequireComponent(typeof(FireTeamHealth))]
 public class FireTeam : MonoBehaviour
 {
-    [SerializeField] private InputAction mouseClickAction;
-    [SerializeField] float playerSpeed = 10f;
+    [SerializeField] bool isSelected = false;
+    public bool IsSelected { get { return isSelected; }}
 
-    private Camera mainCamera;
-    private Coroutine coroutine;
-    private Vector3 targetPosition;
+    [Tooltip("Selection indicator")]
+    [SerializeField] GameObject selectedBase;
 
-    private CharacterController characterController;
-    private Rigidbody rb;
+    CoverType hasCover;
+    GameObject hasCoverIcon;
+    ClickToMove moveFireTeam;
+    Cover[] covers;
+
+    FireTeamHealth health;
 
     private void Awake()
     {
-        mainCamera = Camera.main;
-        //characterController = GetComponent<CharacterController>();
+        moveFireTeam = GetComponent<ClickToMove>();
+        hasCoverIcon = GameObject.Find("hasCoverIcon");
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        mouseClickAction.Enable();
-        mouseClickAction.performed += Move;
+        selectedBase.SetActive(false);
+        moveFireTeam.enabled = false;
+
+        hasCoverIcon.SetActive(false);
+
+        health = GetComponent<FireTeamHealth>();
     }
 
-    private void OnDisable()
+    private void Update()
     {
-        mouseClickAction.performed -= Move;
-        mouseClickAction.Disable();
+        FindCover();
     }
 
-    private void Move(InputAction.CallbackContext context)
+    public void SelectFireTeam()
     {
-        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        isSelected = true;
+        selectedBase.SetActive(true);
+        moveFireTeam.enabled = true;
+        hasCoverIcon.SetActive(true);
+    }
 
-        if(Physics.Raycast(ray: ray, hitInfo: out var hit) && hit.collider)
+    public void DeSelectFireTeam()
+    {
+        isSelected = false;
+        selectedBase.SetActive(false);
+        moveFireTeam.enabled = false;
+        hasCoverIcon.SetActive(false);
+    }
+
+    void FindCover()
+    {
+        covers = FindObjectsOfType<Cover>();
+
+        foreach(Cover cover in covers)
         {
-            if (coroutine != null) StopCoroutine(coroutine);
-            StartCoroutine(PlayerMoveTowards(hit.point));
+            float distanceToTarget = Mathf.Infinity;
+            distanceToTarget = Vector3.Distance(transform.position, cover.transform.position);
+
+            if (distanceToTarget <= cover.CoverRange)
+            {
+                hasCover = cover.CoverType;
+
+                if(cover.CoverType == CoverType.HardCover)
+                {
+                    hasCoverIcon.GetComponent<MeshRenderer>().material.color = Color.red;
+                } else
+                {
+                    hasCoverIcon.GetComponent<MeshRenderer>().material.color = Color.yellow;
+                }
+
+                return;
+            }
         }
-    }
 
-    private IEnumerator PlayerMoveTowards(Vector3 target)
-    {
-        float playerDistanceToFloor = transform.position.y - target.y;
-        target.y += playerDistanceToFloor;
-
-        while(Vector3.Distance(transform.position, target) > 1f)
-        {
-            Vector3 destination = Vector3.MoveTowards(transform.position, target, playerSpeed * Time.deltaTime);
-
-            // transform.position = destination;
-            Vector3 direction = target - transform.position;
-            Vector3 movement = direction.normalized * playerSpeed * Time.deltaTime;
-            //characterController.Move(movement);
-
-            rb.velocity = direction.normalized * playerSpeed;
-
-            yield return null;
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(targetPosition, 1);
+        hasCover = CoverType.None;
+        hasCoverIcon.GetComponent<MeshRenderer>().material.color = Color.white;
     }
 } 

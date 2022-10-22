@@ -3,12 +3,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
-//[RequireComponent(typeof(CharacterController))]
 public class ClickToMove : MonoBehaviour
 {
     [SerializeField] private InputAction mouseClickAction;
     [SerializeField] private float rotationSpeed = 3f;
-    [SerializeField] float playerSpeed = 10f;
+    [SerializeField] float playerSpeed = 4f;
 
     private Camera mainCamera;
     private Coroutine coroutine;
@@ -16,13 +15,11 @@ public class ClickToMove : MonoBehaviour
 
     private int groundLayer;
 
-    private CharacterController characterController;
     private Rigidbody rb;
 
     private void Awake()
     {
         mainCamera = Camera.main;
-        characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
         groundLayer = LayerMask.NameToLayer("Ground");
     }
@@ -60,14 +57,9 @@ public class ClickToMove : MonoBehaviour
         {
             Vector3 destination = Vector3.MoveTowards(transform.position, target, playerSpeed * Time.deltaTime);
 
-            // transform.position = destination;
             Vector3 direction = target - transform.position;
-            Vector3 movement = direction.normalized * playerSpeed * Time.deltaTime;
-            //  characterController.Move(movement);
 
             rb.velocity = direction.normalized * playerSpeed;
-            Debug.Log(direction);
-            //rb.AddForce(direction * playerSpeed);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction.normalized), rotationSpeed * Time.deltaTime);
 
