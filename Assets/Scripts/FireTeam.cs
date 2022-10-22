@@ -6,7 +6,6 @@ using UnityEngine.XR;
 using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(ClickToMove))]
-[RequireComponent(typeof(FireTeamHealth))]
 public class FireTeam : MonoBehaviour
 {
     [SerializeField] bool isSelected = false;
@@ -14,13 +13,17 @@ public class FireTeam : MonoBehaviour
 
     [Tooltip("Selection indicator")]
     [SerializeField] GameObject selectedBase;
+    [SerializeField] float hitPoints = 100f;
+    public float HitPoints { get { return hitPoints; } }
 
     CoverType hasCover;
     GameObject hasCoverIcon;
     ClickToMove moveFireTeam;
     Cover[] covers;
 
-    FireTeamHealth health;
+
+    bool isDead = false;
+    public bool IsDead { get { return isDead; } }
 
     private void Awake()
     {
@@ -34,8 +37,6 @@ public class FireTeam : MonoBehaviour
         moveFireTeam.enabled = false;
 
         hasCoverIcon.SetActive(false);
-
-        health = GetComponent<FireTeamHealth>();
     }
 
     private void Update()
@@ -86,5 +87,22 @@ public class FireTeam : MonoBehaviour
 
         hasCover = CoverType.None;
         hasCoverIcon.GetComponent<MeshRenderer>().material.color = Color.white;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        hitPoints -= damage;
+
+        if (hitPoints <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        if (isDead) return;
+
+        isDead = true;
     }
 } 

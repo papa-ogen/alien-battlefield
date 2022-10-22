@@ -4,13 +4,17 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(FireTeamHealth))]
 public class EnemyFireTeam : MonoBehaviour
 {
-    FireTeamHealth health;
+    [SerializeField] float hitPoints = 100f;
 
-    void Start()
+    public void TakeDamage(float damage)
     {
-        health = GetComponent<FireTeamHealth>();
+        hitPoints -= damage;
+
+        if (hitPoints <= 0)
+        {
+            //GetComponent<DeathHandler>().HandleDeath();
+        }
     }
 }

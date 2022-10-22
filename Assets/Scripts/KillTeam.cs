@@ -28,7 +28,7 @@ public class KillTeam : MonoBehaviour
 
         foreach (FireTeam fireTeam in fireteams)
         {
-            killTeamText.text += fireTeam.name + " (100)\n";
+            killTeamText.text += fireTeam.name + " (" + fireTeam.HitPoints + ")\n";
         }
 
     }

@@ -62,7 +62,6 @@
     <Compile Include="Assets/Scripts/Soldier.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/PlatformSpecificContent.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/Displace.cs" />
-    <Compile Include="Assets/Scripts/FireTeamHealth.cs" />
     <Compile Include="Assets/Scripts/CoverType.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/AfterburnerPhysicsForce.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/ExplosionPhysicsForce.cs" />

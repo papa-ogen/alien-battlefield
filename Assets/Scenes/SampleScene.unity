@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1723646945}
     m_Modifications:
+    - target: {fileID: 409926713073961467, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: hitPoints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -178,7 +182,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soldier Fire Team (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1872900991203499225, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
 --- !u!1001 &156232864
 PrefabInstance:
@@ -964,6 +969,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
   m_PrefabInstance: {fileID: 30158820}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1563578361
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1723646945}
+    m_Modifications:
+    - target: {fileID: 409926713073961467, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: hitPoints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330742312568457039, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+      propertyPath: m_Name
+      value: Soldier Fire Team (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1872900991203499225, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
 --- !u!1 &1572217989
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,8 +1066,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 189.64728, y: -229}
-  m_SizeDelta: {x: 351.2946, y: 434}
+  m_AnchoredPosition: {x: 232.14697, y: -229}
+  m_SizeDelta: {x: 436.294, y: 434}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1572217991
 MonoBehaviour:
@@ -1229,7 +1296,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soldier Fire Team
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1872900991203499225, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
 --- !u!1 &1723646943
 GameObject:
@@ -1276,6 +1344,7 @@ Transform:
   - {fileID: 2100139023}
   - {fileID: 1530661952}
   - {fileID: 2007215325}
+  - {fileID: 2010953634}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1291,7 +1360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf30f8e3ad264513a93a998856365e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killTeamText: {fileID: 0}
+  killTeamText: {fileID: 1572217991}
 --- !u!4 &1768302611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5862bbfe91a75054ca72c13b555b6ac5, type: 3}
@@ -1398,6 +1467,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!4 &2010953634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
+  m_PrefabInstance: {fileID: 1563578361}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2100139023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2330742312568457032, guid: b4167e9e5bf09497a9fec6c50d7a3bab, type: 3}
