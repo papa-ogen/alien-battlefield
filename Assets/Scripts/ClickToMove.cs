@@ -12,6 +12,7 @@ public class ClickToMove : MonoBehaviour
     private Camera mainCamera;
     private Coroutine coroutine;
     private Vector3 targetPosition;
+    FireTeam fireTeam;
 
     private int groundLayer;
 
@@ -22,6 +23,7 @@ public class ClickToMove : MonoBehaviour
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
         groundLayer = LayerMask.NameToLayer("Ground");
+        fireTeam = GetComponent<FireTeam>();
     }
 
     private void OnEnable()
@@ -64,6 +66,11 @@ public class ClickToMove : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction.normalized), rotationSpeed * Time.deltaTime);
 
             yield return null;
+        }
+
+        if (fireTeam.TargetEnemy)
+        {
+            fireTeam.transform.LookAt(fireTeam.TargetEnemy.transform);
         }
     }
 

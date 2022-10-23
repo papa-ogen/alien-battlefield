@@ -12,9 +12,6 @@ public class KillTeam : MonoBehaviour
     void Start()
     {
         fireteams = GetComponentsInChildren<FireTeam>();
-        
-
-        Debug.Log("Fire Teams " + fireteams.Length);    
     }
 
     void Update()

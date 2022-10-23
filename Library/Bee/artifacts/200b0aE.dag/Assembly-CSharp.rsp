@@ -396,6 +396,7 @@
 "Assets/Extra Assets/Standard Assets/Utility/WaypointProgressTracker.cs"
 "Assets/Scripts/ClickToMove.cs"
 "Assets/Scripts/Cover.cs"
+"Assets/Scripts/CoverIcon.cs"
 "Assets/Scripts/CoverType.cs"
 "Assets/Scripts/EnemyFireTeam.cs"
 "Assets/Scripts/FireTeam.cs"

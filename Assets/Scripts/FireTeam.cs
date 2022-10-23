@@ -3,23 +3,34 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
+using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(ClickToMove))]
 public class FireTeam : MonoBehaviour
 {
-    [SerializeField] bool isSelected = false;
-    public bool IsSelected { get { return isSelected; }}
+    bool isSelected = false;
+    public bool IsSelected { get { return isSelected; } }
 
     [Tooltip("Selection indicator")]
     [SerializeField] GameObject selectedBase;
     [SerializeField] float hitPoints = 100f;
     public float HitPoints { get { return hitPoints; } }
 
+    [SerializeField] float attackRange = 30f;
+    [SerializeField] float attackDamage = 30f;
+    [SerializeField] float attackSpeed = 3f;
+    [SerializeField] ParticleSystem attackEffect;
+    [SerializeField] bool canAttack = true;
+    public bool CanAttack { get { return canAttack; } set { canAttack = value; } }
+
     CoverType hasCover;
-    GameObject hasCoverIcon;
+    CoverIcon coverIcon;
     ClickToMove moveFireTeam;
     Cover[] covers;
+    EnemyFireTeam[] enemies;
+    EnemyFireTeam targetEnemy;
+    public EnemyFireTeam TargetEnemy { get { return targetEnemy; } }
 
 
     bool isDead = false;
@@ -28,7 +39,7 @@ public class FireTeam : MonoBehaviour
     private void Awake()
     {
         moveFireTeam = GetComponent<ClickToMove>();
-        hasCoverIcon = GameObject.Find("hasCoverIcon");
+        coverIcon = GetComponentInChildren<CoverIcon>();
     }
 
     private void Start()
@@ -36,12 +47,20 @@ public class FireTeam : MonoBehaviour
         selectedBase.SetActive(false);
         moveFireTeam.enabled = false;
 
-        hasCoverIcon.SetActive(false);
+        coverIcon.enabled = false;
     }
 
     private void Update()
     {
+        Debug.Log(targetEnemy);
         FindCover();
+
+        if (targetEnemy == null)
+        {
+            LookForEnemies();
+        } else if (targetEnemy != null && canAttack) {
+           StartCoroutine(Attack());
+        }
     }
 
     public void SelectFireTeam()
@@ -49,7 +68,7 @@ public class FireTeam : MonoBehaviour
         isSelected = true;
         selectedBase.SetActive(true);
         moveFireTeam.enabled = true;
-        hasCoverIcon.SetActive(true);
+        coverIcon.enabled = true;
     }
 
     public void DeSelectFireTeam()
@@ -57,7 +76,7 @@ public class FireTeam : MonoBehaviour
         isSelected = false;
         selectedBase.SetActive(false);
         moveFireTeam.enabled = false;
-        hasCoverIcon.SetActive(false);
+        coverIcon.enabled = false;
     }
 
     void FindCover()
@@ -75,10 +94,10 @@ public class FireTeam : MonoBehaviour
 
                 if(cover.CoverType == CoverType.HardCover)
                 {
-                    hasCoverIcon.GetComponent<MeshRenderer>().material.color = Color.red;
+                    coverIcon.GetComponent<MeshRenderer>().material.color = Color.red;
                 } else
                 {
-                    hasCoverIcon.GetComponent<MeshRenderer>().material.color = Color.yellow;
+                    coverIcon.GetComponent<MeshRenderer>().material.color = Color.yellow;
                 }
 
                 return;
@@ -86,7 +105,7 @@ public class FireTeam : MonoBehaviour
         }
 
         hasCover = CoverType.None;
-        hasCoverIcon.GetComponent<MeshRenderer>().material.color = Color.white;
+        coverIcon.GetComponent<MeshRenderer>().material.color = Color.white;
     }
 
     public void TakeDamage(float damage)
@@ -105,4 +124,59 @@ public class FireTeam : MonoBehaviour
 
         isDead = true;
     }
-} 
+
+    void LookForEnemies()
+    {
+        enemies = FindObjectsOfType<EnemyFireTeam>();
+
+        foreach (EnemyFireTeam enemy in enemies)
+        {
+            if(!enemy.IsHidden)
+            {
+                float distanceToTarget = Vector3.Distance(transform.position, enemy.transform.position);
+
+                if (distanceToTarget <= attackRange)
+                {
+                    targetEnemy = enemy;
+
+                    return;
+                }
+            }
+        }
+    }
+
+    IEnumerator Attack()
+    {
+        canAttack = false;
+        SetTracersActive(true);
+
+        // Give damage method - if in cover for example
+        targetEnemy.TakeDamage(attackDamage);
+
+        PlayMuzzleFlash();
+
+        yield return new WaitForSeconds(attackSpeed);
+
+        SetTracersActive(false);
+        canAttack = true;
+    }
+
+    private void PlayMuzzleFlash()
+    {
+        attackEffect.Play();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
+    [System.Obsolete]
+    private void SetTracersActive(bool isActive)
+    {
+        attackEffect.enableEmission = isActive;
+        // attackEffect.emission.enabled = !isActive;
+    }
+}
+

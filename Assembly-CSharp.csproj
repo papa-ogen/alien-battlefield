@@ -99,6 +99,7 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/AutoMobileShaderSwitch.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/AlphaButtonClickMask.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/FOVKick.cs" />
+    <Compile Include="Assets/Scripts/CoverIcon.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/WaterHoseParticles.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/EventSystemChecker.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/ActivateTrigger.cs" />
