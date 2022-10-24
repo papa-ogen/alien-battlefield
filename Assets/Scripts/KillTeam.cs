@@ -7,26 +7,39 @@ using static UnityStandardAssets.Utility.TimedObjectActivator;
 public class KillTeam : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI killTeamText;
-    FireTeam[] fireteams;
+    [SerializeField] TextMeshProUGUI killTeamMoraleText;
+    FireTeam[] fireTeams;
+    int morale = 100;
 
     void Start()
     {
-        fireteams = GetComponentsInChildren<FireTeam>();
-    }
+        fireTeams = GetComponentsInChildren<FireTeam>();
 
-    void Update()
-    {
         DisplayKillTeam();
+        DisplayMorale();
     }
 
     private void DisplayKillTeam()
     {
         killTeamText.text = "";
 
-        foreach (FireTeam fireTeam in fireteams)
+        foreach (FireTeam fireTeam in fireTeams)
         {
             killTeamText.text += fireTeam.name + " (" + fireTeam.HitPoints + ")\n";
         }
 
+    }
+
+    public void DisplayMorale()
+    {
+        killTeamMoraleText.text = "Kill Team (Morale: " + morale + ")";
+    }
+
+    void FireTeamKilled(int moralePenalty)
+    {
+        morale -= moralePenalty;
+
+        DisplayKillTeam();
+        DisplayMorale();
     }
 }

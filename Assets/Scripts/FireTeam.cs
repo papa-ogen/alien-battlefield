@@ -32,9 +32,10 @@ public class FireTeam : MonoBehaviour
     EnemyFireTeam targetEnemy;
     public EnemyFireTeam TargetEnemy { get { return targetEnemy; } }
 
-
     bool isDead = false;
     public bool IsDead { get { return isDead; } }
+    bool isHidden = false;
+    public bool IsHidden { get { return isHidden; } }
 
     private void Awake()
     {
@@ -52,8 +53,7 @@ public class FireTeam : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(targetEnemy);
-        FindCover();
+        IsInCover();
 
         if (targetEnemy == null)
         {
@@ -79,7 +79,7 @@ public class FireTeam : MonoBehaviour
         coverIcon.enabled = false;
     }
 
-    void FindCover()
+    void IsInCover()
     {
         covers = FindObjectsOfType<Cover>();
 
@@ -120,9 +120,12 @@ public class FireTeam : MonoBehaviour
 
     void Die()
     {
-        if (isDead) return;
-
-        isDead = true;
+        if (hitPoints <= 0)
+        {
+            // send morale penaly, TOOD: unitfactor type property?
+            SendMessageUpwards("FireTeamKilled", 10);
+            Destroy(gameObject);
+        }
     }
 
     void LookForEnemies()
