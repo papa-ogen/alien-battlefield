@@ -139,6 +139,8 @@ public class FireTeam : MonoBehaviour
                 {
                     targetEnemy = enemy;
 
+                    transform.LookAt(targetEnemy.transform);
+
                     return;
                 }
             }

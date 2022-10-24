@@ -399,6 +399,7 @@
 "Assets/Scripts/CoverIcon.cs"
 "Assets/Scripts/CoverType.cs"
 "Assets/Scripts/EnemyFireTeam.cs"
+"Assets/Scripts/EnemyKillTeam.cs"
 "Assets/Scripts/FireTeam.cs"
 "Assets/Scripts/KillTeam.cs"
 "Assets/Scripts/SelectFireTeam.cs"

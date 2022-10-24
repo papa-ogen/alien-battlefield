@@ -8,6 +8,7 @@ using System;
 public class EnemyFireTeam : MonoBehaviour
 {
     [SerializeField] float hitPoints = 100f;
+    public float HitPoints { get { return hitPoints; } }
     [SerializeField] CoverType hasCover;
     public CoverType HasCover { get { return hasCover; } }
 
