@@ -394,6 +394,8 @@
 "Assets/Extra Assets/Standard Assets/Utility/TimedObjectDestructor.cs"
 "Assets/Extra Assets/Standard Assets/Utility/WaypointCircuit.cs"
 "Assets/Extra Assets/Standard Assets/Utility/WaypointProgressTracker.cs"
+"Assets/Input Settings/CameraControlActions.cs"
+"Assets/Scripts/CameraController.cs"
 "Assets/Scripts/ClickToMove.cs"
 "Assets/Scripts/Cover.cs"
 "Assets/Scripts/CoverIcon.cs"

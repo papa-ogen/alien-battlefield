@@ -26,7 +26,7 @@ public class EnemyKillTeam : MonoBehaviour
 
     private void RespondToDebugKeys()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             isDebug = !isDebug;
         }
