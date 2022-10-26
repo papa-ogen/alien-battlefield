@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SelectFireTeam : MonoBehaviour
 {
@@ -29,8 +30,10 @@ public class SelectFireTeam : MonoBehaviour
 
     void OnSelectFireTeam()
     {
+        Debug.Log(Camera.main);
+
         RaycastHit raycastHit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out raycastHit, 100f))
         {
             if (raycastHit.transform != null)
