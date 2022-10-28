@@ -396,16 +396,17 @@
 "Assets/Extra Assets/Standard Assets/Utility/WaypointProgressTracker.cs"
 "Assets/Input Settings/CameraControlActions.cs"
 "Assets/Scripts/CameraController.cs"
-"Assets/Scripts/ClickToMove.cs"
 "Assets/Scripts/Cover.cs"
 "Assets/Scripts/CoverIcon.cs"
 "Assets/Scripts/CoverType.cs"
 "Assets/Scripts/EnemyFireTeam.cs"
 "Assets/Scripts/EnemyKillTeam.cs"
 "Assets/Scripts/FireTeam.cs"
+"Assets/Scripts/FireTeamClick.cs"
+"Assets/Scripts/FireTeamDrag.cs"
+"Assets/Scripts/FireTeamMovement.cs"
+"Assets/Scripts/FireTeamSelections.cs"
 "Assets/Scripts/KillTeam.cs"
-"Assets/Scripts/SelectFireTeam.cs"
-"Assets/Scripts/Soldier.cs"
 -langversion:9.0
 
 /deterministic

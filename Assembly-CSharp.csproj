@@ -59,7 +59,6 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/Explosive.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/DynamicShadowSettings.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/LerpControlledBob.cs" />
-    <Compile Include="Assets/Scripts/Soldier.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/PlatformSpecificContent.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/Displace.cs" />
     <Compile Include="Assets/Scripts/CoverType.cs" />
@@ -74,12 +73,10 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/ParticleSystemMultiplier.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/GerstnerDisplace.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/AutoMoveAndRotate.cs" />
-    <Compile Include="Assets/Scripts/SelectFireTeam.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/FPSCounter.cs" />
     <Compile Include="Assets/Scripts/KillTeam.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/ExplosionFireAndDebris.cs" />
     <Compile Include="Assets/Scripts/FireTeam.cs" />
-    <Compile Include="Assets/Scripts/ClickToMove.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/SmoothFollow.cs" />
     <Compile Include="Assets/Scripts/EnemyKillTeam.cs" />
     <Compile Include="Assets/Scripts/Cover.cs" />
@@ -108,6 +105,10 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/Hose.cs" />
     <Compile Include="Assets/Scripts/CameraController.cs" />
     <Compile Include="Assets/Input Settings/CameraControlActions.cs" />
+    <Compile Include="Assets/Scripts/FireTeamSelections.cs" />
+    <Compile Include="Assets/Scripts/FireTeamClick.cs" />
+    <Compile Include="Assets/Scripts/FireTeamDrag.cs" />
+    <Compile Include="Assets/Scripts/FireTeamMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Extra Assets/Standard Assets/Prototyping/Shaders/WorldCoordDiffuse.shader" />

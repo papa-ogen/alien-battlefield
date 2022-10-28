@@ -2,31 +2,23 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEngine.GraphicsBuffer;
 
-[RequireComponent(typeof(ClickToMove))]
 public class FireTeam : MonoBehaviour
 {
     bool isSelected = false;
     public bool IsSelected { get { return isSelected; } }
 
-    [Tooltip("Selection indicator")]
-    [SerializeField] GameObject selectedBase;
     [SerializeField] float hitPoints = 100f;
     public float HitPoints { get { return hitPoints; } }
 
     [SerializeField] float attackRange = 30f;
     [SerializeField] float attackDamage = 30f;
     [SerializeField] float attackSpeed = 3f;
-    [SerializeField] ParticleSystem attackEffect;
+    //[SerializeField] ParticleSystem attackEffect;
     [SerializeField] bool canAttack = true;
     public bool CanAttack { get { return canAttack; } set { canAttack = value; } }
 
     CoverType hasCover;
-    CoverIcon coverIcon;
-    ClickToMove moveFireTeam;
     Cover[] covers;
     EnemyFireTeam[] enemies;
     EnemyFireTeam targetEnemy;
@@ -37,22 +29,19 @@ public class FireTeam : MonoBehaviour
     bool isHidden = false;
     public bool IsHidden { get { return isHidden; } }
 
-    private void Awake()
-    {
-        moveFireTeam = GetComponent<ClickToMove>();
-        coverIcon = GetComponentInChildren<CoverIcon>();
-    }
-
     private void Start()
     {
-        selectedBase.SetActive(false);
-        moveFireTeam.enabled = false;
+        FireTeamSelections.Instance.fireTeamList.Add(gameObject);
+    }
 
-        coverIcon.enabled = false;
+    private void OnDestroy()
+    {
+        FireTeamSelections.Instance.fireTeamList.Remove(gameObject);
     }
 
     private void Update()
     {
+        /*
         IsInCover();
 
         if (targetEnemy == null)
@@ -61,22 +50,17 @@ public class FireTeam : MonoBehaviour
         } else if (targetEnemy != null && canAttack) {
            StartCoroutine(Attack());
         }
+        */
     }
 
     public void SelectFireTeam()
     {
         isSelected = true;
-        selectedBase.SetActive(true);
-        moveFireTeam.enabled = true;
-        coverIcon.enabled = true;
     }
 
     public void DeSelectFireTeam()
     {
         isSelected = false;
-        selectedBase.SetActive(false);
-        moveFireTeam.enabled = false;
-        coverIcon.enabled = false;
     }
 
     void IsInCover()
@@ -92,20 +76,11 @@ public class FireTeam : MonoBehaviour
             {
                 hasCover = cover.CoverType;
 
-                if(cover.CoverType == CoverType.HardCover)
-                {
-                    coverIcon.GetComponent<MeshRenderer>().material.color = Color.red;
-                } else
-                {
-                    coverIcon.GetComponent<MeshRenderer>().material.color = Color.yellow;
-                }
-
                 return;
             }
         }
 
         hasCover = CoverType.None;
-        coverIcon.GetComponent<MeshRenderer>().material.color = Color.white;
     }
 
     public void TakeDamage(float damage)
@@ -168,7 +143,7 @@ public class FireTeam : MonoBehaviour
 
     private void PlayMuzzleFlash()
     {
-        attackEffect.Play();
+      //  attackEffect.Play();
     }
 
     private void OnDrawGizmosSelected()
@@ -180,7 +155,7 @@ public class FireTeam : MonoBehaviour
     [System.Obsolete]
     private void SetTracersActive(bool isActive)
     {
-        attackEffect.enableEmission = isActive;
+       // attackEffect.enableEmission = isActive;
         // attackEffect.emission.enabled = !isActive;
     }
 }
