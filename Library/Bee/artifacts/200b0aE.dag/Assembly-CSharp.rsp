@@ -408,6 +408,7 @@
 "Assets/Scripts/FireTeamMovement.cs"
 "Assets/Scripts/FireTeamSelections.cs"
 "Assets/Scripts/KillTeam.cs"
+"Assets/Scripts/MouseController.cs"
 -langversion:9.0
 
 /deterministic
