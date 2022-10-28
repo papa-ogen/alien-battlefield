@@ -52,6 +52,7 @@ public class FireTeamAttack : MonoBehaviour
     IEnumerator Attack()
     {
         canAttack = false;
+        transform.LookAt(targetEnemy.transform);
         SetTracersActive(true);
 
         // Give damage method - if in cover for example

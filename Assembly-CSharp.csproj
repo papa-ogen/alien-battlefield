@@ -108,9 +108,9 @@
     <Compile Include="Assets/Scripts/FireTeamMovement.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/EventSystemChecker.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/ActivateTrigger.cs" />
+    <Compile Include="Assets/Scripts/MouseController.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/Water.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/Hose.cs" />
-    <Compile Include="Assets/Scripts/MouseController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Extra Assets/Standard Assets/Prototyping/Shaders/WorldCoordDiffuse.shader" />

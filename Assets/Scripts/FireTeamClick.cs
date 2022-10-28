@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FireTeamClick : MonoBehaviour
@@ -49,9 +50,23 @@ public class FireTeamClick : MonoBehaviour
             {
                 groundMarker.transform.position = hit.point;
                 groundMarker.SetActive(true);
-                
             }
         }
-        
+
+
+        IsFireTeamMoving();
+    }
+
+    void IsFireTeamMoving()
+    {
+        List<GameObject> fireTeams = FireTeamSelections.Instance.fireTeamList;
+
+        foreach (GameObject fireTeam in fireTeams)
+        {
+            FireTeamMovement ftm = fireTeam.GetComponent<FireTeamMovement>();
+            if (ftm.enabled) return;
+        }
+
+        groundMarker.SetActive(false);
     }
 }
