@@ -28,6 +28,7 @@ public class EnemyFireTeam : MonoBehaviour
 
     private void Update()
     {
+        /*
         IsInCover();
 
         if (targetEnemy == null)
@@ -38,6 +39,7 @@ public class EnemyFireTeam : MonoBehaviour
         {
             StartCoroutine(Attack());
         }
+        */
     }
 
     public void TakeDamage(float damage)

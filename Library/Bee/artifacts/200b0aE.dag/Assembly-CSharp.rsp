@@ -402,6 +402,7 @@
 "Assets/Scripts/EnemyFireTeam.cs"
 "Assets/Scripts/EnemyKillTeam.cs"
 "Assets/Scripts/FireTeam.cs"
+"Assets/Scripts/FireTeamAttack.cs"
 "Assets/Scripts/FireTeamClick.cs"
 "Assets/Scripts/FireTeamDrag.cs"
 "Assets/Scripts/FireTeamMovement.cs"

@@ -61,6 +61,7 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/LerpControlledBob.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/PlatformSpecificContent.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/Displace.cs" />
+    <Compile Include="Assets/Scripts/FireTeamSelections.cs" />
     <Compile Include="Assets/Scripts/CoverType.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/AfterburnerPhysicsForce.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/ExplosionPhysicsForce.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/GerstnerDisplace.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/AutoMoveAndRotate.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/FPSCounter.cs" />
+    <Compile Include="Assets/Scripts/FireTeamDrag.cs" />
     <Compile Include="Assets/Scripts/KillTeam.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/ExplosionFireAndDebris.cs" />
     <Compile Include="Assets/Scripts/FireTeam.cs" />
@@ -82,6 +84,8 @@
     <Compile Include="Assets/Scripts/Cover.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/WaypointCircuit.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/TimedObjectDestructor.cs" />
+    <Compile Include="Assets/Scripts/FireTeamAttack.cs" />
+    <Compile Include="Assets/Scripts/CameraController.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/WaterTile.cs" />
     <Compile Include="Assets/Scripts/EnemyFireTeam.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/SpecularLighting.cs" />
@@ -92,6 +96,7 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/MeshContainer.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/FollowTarget.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/ExtinguishableParticleSystem.cs" />
+    <Compile Include="Assets/Scripts/FireTeamClick.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/ParticleSystemDestroyer.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/ObjectResetter.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/AutoMobileShaderSwitch.cs" />
@@ -99,16 +104,12 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/FOVKick.cs" />
     <Compile Include="Assets/Scripts/CoverIcon.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/WaterHoseParticles.cs" />
+    <Compile Include="Assets/Input Settings/CameraControlActions.cs" />
+    <Compile Include="Assets/Scripts/FireTeamMovement.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/EventSystemChecker.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/ActivateTrigger.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/Water.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/Hose.cs" />
-    <Compile Include="Assets/Scripts/CameraController.cs" />
-    <Compile Include="Assets/Input Settings/CameraControlActions.cs" />
-    <Compile Include="Assets/Scripts/FireTeamSelections.cs" />
-    <Compile Include="Assets/Scripts/FireTeamClick.cs" />
-    <Compile Include="Assets/Scripts/FireTeamDrag.cs" />
-    <Compile Include="Assets/Scripts/FireTeamMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Extra Assets/Standard Assets/Prototyping/Shaders/WorldCoordDiffuse.shader" />

@@ -11,18 +11,8 @@ public class FireTeam : MonoBehaviour
     [SerializeField] float hitPoints = 100f;
     public float HitPoints { get { return hitPoints; } }
 
-    [SerializeField] float attackRange = 30f;
-    [SerializeField] float attackDamage = 30f;
-    [SerializeField] float attackSpeed = 3f;
-    //[SerializeField] ParticleSystem attackEffect;
-    [SerializeField] bool canAttack = true;
-    public bool CanAttack { get { return canAttack; } set { canAttack = value; } }
-
     CoverType hasCover;
     Cover[] covers;
-    EnemyFireTeam[] enemies;
-    EnemyFireTeam targetEnemy;
-    public EnemyFireTeam TargetEnemy { get { return targetEnemy; } }
 
     bool isDead = false;
     public bool IsDead { get { return isDead; } }
@@ -41,16 +31,7 @@ public class FireTeam : MonoBehaviour
 
     private void Update()
     {
-        /*
-        IsInCover();
-
-        if (targetEnemy == null)
-        {
-            LookForEnemies();
-        } else if (targetEnemy != null && canAttack) {
-           StartCoroutine(Attack());
-        }
-        */
+       // IsInCover();
     }
 
     public void SelectFireTeam()
@@ -98,65 +79,9 @@ public class FireTeam : MonoBehaviour
         if (hitPoints <= 0)
         {
             // send morale penaly, TOOD: unitfactor type property?
-            SendMessageUpwards("FireTeamKilled", 10);
+            // SendMessageUpwards("FireTeamKilled", 10);
             Destroy(gameObject);
         }
-    }
-
-    void LookForEnemies()
-    {
-        enemies = FindObjectsOfType<EnemyFireTeam>();
-
-        foreach (EnemyFireTeam enemy in enemies)
-        {
-            if(!enemy.IsHidden)
-            {
-                float distanceToTarget = Vector3.Distance(transform.position, enemy.transform.position);
-
-                if (distanceToTarget <= attackRange)
-                {
-                    targetEnemy = enemy;
-
-                    transform.LookAt(targetEnemy.transform);
-
-                    return;
-                }
-            }
-        }
-    }
-
-    IEnumerator Attack()
-    {
-        canAttack = false;
-        SetTracersActive(true);
-
-        // Give damage method - if in cover for example
-        targetEnemy.TakeDamage(attackDamage);
-
-        PlayMuzzleFlash();
-
-        yield return new WaitForSeconds(attackSpeed);
-
-        SetTracersActive(false);
-        canAttack = true;
-    }
-
-    private void PlayMuzzleFlash()
-    {
-      //  attackEffect.Play();
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
-
-    [System.Obsolete]
-    private void SetTracersActive(bool isActive)
-    {
-       // attackEffect.enableEmission = isActive;
-        // attackEffect.emission.enabled = !isActive;
     }
 }
 
