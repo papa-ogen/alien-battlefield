@@ -19,6 +19,12 @@ public class KillTeam : MonoBehaviour
         DisplayMorale();
     }
 
+    private void Update()
+    {
+        DisplayKillTeam();
+        DisplayMorale();
+    }
+
     private void DisplayKillTeam()
     {
         killTeamText.text = "";
@@ -38,8 +44,5 @@ public class KillTeam : MonoBehaviour
     void FireTeamKilled(int moralePenalty)
     {
         morale -= moralePenalty;
-
-        DisplayKillTeam();
-        DisplayMorale();
     }
 }

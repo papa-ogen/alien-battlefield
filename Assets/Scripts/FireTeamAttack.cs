@@ -5,12 +5,11 @@ using UnityEngine;
 public class FireTeamAttack : MonoBehaviour
 {
     [SerializeField] float attackRange = 30f;
-    [SerializeField] float attackDamage = 30f;
+    [SerializeField] int attackDamage = 30;
     [SerializeField] float attackSpeed = 3f;
     [SerializeField] ParticleSystem attackEffect;
 
     [SerializeField] bool canAttack = true;
-    // public bool CanAttack { get { return canAttack; } set { canAttack = value; } }
 
     EnemyFireTeam[] enemies;
     EnemyFireTeam targetEnemy;
@@ -33,6 +32,8 @@ public class FireTeamAttack : MonoBehaviour
 
     void LookForEnemies()
     {
+        GetComponent<Animator>().SetBool("attack", false);
+
         enemies = FindObjectsOfType<EnemyFireTeam>();
 
         foreach (EnemyFireTeam enemy in enemies)
@@ -52,6 +53,7 @@ public class FireTeamAttack : MonoBehaviour
 
     IEnumerator Attack()
     {
+        GetComponent<Animator>().SetBool("attack", true);
         canAttack = false;
         transform.LookAt(targetEnemy.transform);
         SetTracersActive(true);

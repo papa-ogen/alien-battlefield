@@ -68,7 +68,6 @@ public class CameraController : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log(cameraTransform);
         zoomHeight = cameraTransform.localPosition.y;
         cameraTransform.LookAt(transform);
 

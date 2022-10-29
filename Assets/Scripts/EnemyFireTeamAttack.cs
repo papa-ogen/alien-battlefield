@@ -5,55 +5,27 @@ using UnityEngine;
 public class EnemyFireTeamAttack : MonoBehaviour
 {
     [SerializeField] float attackRange = 30f;
-    [SerializeField] float attackDamage = 30f;
+    [SerializeField] int attackDamage = 30;
     [SerializeField] float attackSpeed = 3f;
     [SerializeField] ParticleSystem attackEffect;
 
     [SerializeField] bool canAttack = true;
 
-    FireTeam[] enemies;
     FireTeam targetEnemy;
+
+    private void OnEnable()
+    {
+        targetEnemy = GetComponent<EnemyFireTeam>().TargetEnemy;
+    }
 
     void Update()
     {
-        if (targetEnemy == null)
-        {
-            LookForEnemies();
-        }
-        else if (targetEnemy.IsDead)
-        {
-            targetEnemy = null;
-        }
-        else if (targetEnemy != null && canAttack)
-        {
-            StartCoroutine(Attack());
-        }
-    }
-
-    void LookForEnemies()
-    {
-        enemies = FindObjectsOfType<FireTeam>();
-
-        foreach (FireTeam enemy in enemies)
-        {
-            if (!enemy.IsHidden)
-            {
-                float distanceToTarget = Vector3.Distance(transform.position, enemy.transform.position);
-
-                if (distanceToTarget <= attackRange && !enemy.IsDead)
-                {
-                    targetEnemy = enemy;
-
-                    transform.LookAt(targetEnemy.transform);
-
-                    return;
-                }
-            }
-        }
+        StartCoroutine(Attack());
     }
 
     IEnumerator Attack()
     {
+        GetComponent<Animator>().SetBool("attack", true);
         canAttack = false;
         transform.LookAt(targetEnemy.transform);
         SetTracersActive(true);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,30 +9,25 @@ public class FireTeam : MonoBehaviour
     bool isSelected = false;
     public bool IsSelected { get { return isSelected; } }
 
-    [SerializeField] float hitPoints = 100f;
-    public float HitPoints { get { return hitPoints; } }
-
-    CoverType hasCover;
-    Cover[] covers;
+    [SerializeField] int hitPoints = 100;
+    public int HitPoints { get { return hitPoints; } }
 
     bool isDead = false;
     public bool IsDead { get { return isDead; } }
     bool isHidden = false;
     public bool IsHidden { get { return isHidden; } }
 
+    FireTeamCover cover;
+
     private void Start()
     {
         FireTeamSelections.Instance.fireTeamList.Add(gameObject);
+        cover = GetComponent<FireTeamCover>();
     }
 
     private void OnDestroy()
     {
         FireTeamSelections.Instance.fireTeamList.Remove(gameObject);
-    }
-
-    private void Update()
-    {
-       // IsInCover();
     }
 
     public void SelectFireTeam()
@@ -44,29 +40,18 @@ public class FireTeam : MonoBehaviour
         isSelected = false;
     }
 
-    void IsInCover()
+    public void TakeDamage(int damage)
     {
-        covers = FindObjectsOfType<Cover>();
-
-        foreach(Cover cover in covers)
+        if(cover.Cover == CoverType.LightCover)
         {
-            float distanceToTarget = Mathf.Infinity;
-            distanceToTarget = Vector3.Distance(transform.position, cover.transform.position);
-
-            if (distanceToTarget <= cover.CoverRange)
-            {
-                hasCover = cover.CoverType;
-
-                return;
-            }
+            hitPoints -= Convert.ToInt32(damage * 0.7);
+        } else if(cover.Cover == CoverType.HardCover)
+        {
+            hitPoints -= Convert.ToInt32(damage * 0.3);
+        } else
+        {
+            hitPoints -= damage;
         }
-
-        hasCover = CoverType.None;
-    }
-
-    public void TakeDamage(float damage)
-    {
-        hitPoints -= damage;
 
         if (hitPoints <= 0)
         {
@@ -81,8 +66,6 @@ public class FireTeam : MonoBehaviour
         isDead = true;
         GetComponent<Animator>().SetTrigger("die");
         GetComponent<FireTeamAttack>().enabled = false;
-
-        Destroy(gameObject, 2);
 
         // send morale penaly, TOOD: unitfactor type property?
         // SendMessageUpwards("FireTeamKilled", 10);
