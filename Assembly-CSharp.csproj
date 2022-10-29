@@ -92,6 +92,7 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/WaypointProgressTracker.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/DragRigidbody.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/FireLight.cs" />
+    <Compile Include="Assets/Scripts/EnemyFireTeamAttack.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/WaterBase.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/MeshContainer.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/FollowTarget.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/ActivateTrigger.cs" />
     <Compile Include="Assets/Scripts/MouseController.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/Water.cs" />
+    <Compile Include="Assets/Scripts/Unit.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/Hose.cs" />
   </ItemGroup>
   <ItemGroup>

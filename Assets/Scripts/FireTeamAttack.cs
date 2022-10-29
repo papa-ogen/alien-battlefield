@@ -21,6 +21,10 @@ public class FireTeamAttack : MonoBehaviour
         {
             LookForEnemies();
         }
+        else if (targetEnemy.IsDead)
+        {
+            targetEnemy = null;
+        }
         else if (targetEnemy != null && canAttack)
         {
             StartCoroutine(Attack());
@@ -33,18 +37,15 @@ public class FireTeamAttack : MonoBehaviour
 
         foreach (EnemyFireTeam enemy in enemies)
         {
-            if (!enemy.IsHidden)
+            float distanceToTarget = Vector3.Distance(transform.position, enemy.transform.position);
+
+            if (distanceToTarget <= attackRange && !enemy.IsDead)
             {
-                float distanceToTarget = Vector3.Distance(transform.position, enemy.transform.position);
+                targetEnemy = enemy;
 
-                if (distanceToTarget <= attackRange)
-                {
-                    targetEnemy = enemy;
+                transform.LookAt(targetEnemy.transform);
 
-                    transform.LookAt(targetEnemy.transform);
-
-                    return;
-                }
+                return;
             }
         }
     }
