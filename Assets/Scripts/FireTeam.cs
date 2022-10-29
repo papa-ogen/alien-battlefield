@@ -74,14 +74,16 @@ public class FireTeam : MonoBehaviour
         }
     }
 
-    void Die()
+    private void Die()
     {
-        if (hitPoints <= 0)
-        {
-            // send morale penaly, TOOD: unitfactor type property?
-            // SendMessageUpwards("FireTeamKilled", 10);
-            Destroy(gameObject);
-        }
+        if (isDead) return;
+
+        isDead = true;
+        GetComponent<Animator>().SetTrigger("die");
+        GetComponent<FireTeamAttack>().enabled = false;
+
+        // send morale penaly, TOOD: unitfactor type property?
+        // SendMessageUpwards("FireTeamKilled", 10);
     }
 }
 

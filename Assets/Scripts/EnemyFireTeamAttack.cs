@@ -20,6 +20,10 @@ public class EnemyFireTeamAttack : MonoBehaviour
         {
             LookForEnemies();
         }
+        else if (targetEnemy.IsDead)
+        {
+            targetEnemy = null;
+        }
         else if (targetEnemy != null && canAttack)
         {
             StartCoroutine(Attack());
@@ -36,7 +40,7 @@ public class EnemyFireTeamAttack : MonoBehaviour
             {
                 float distanceToTarget = Vector3.Distance(transform.position, enemy.transform.position);
 
-                if (distanceToTarget <= attackRange)
+                if (distanceToTarget <= attackRange && !enemy.IsDead)
                 {
                     targetEnemy = enemy;
 
