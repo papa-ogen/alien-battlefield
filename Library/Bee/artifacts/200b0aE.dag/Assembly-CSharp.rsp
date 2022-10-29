@@ -400,6 +400,7 @@
 "Assets/Scripts/CoverIcon.cs"
 "Assets/Scripts/CoverType.cs"
 "Assets/Scripts/EnemyFireTeam.cs"
+"Assets/Scripts/EnemyFireTeamAttack.cs"
 "Assets/Scripts/EnemyKillTeam.cs"
 "Assets/Scripts/FireTeam.cs"
 "Assets/Scripts/FireTeamAttack.cs"
@@ -409,6 +410,7 @@
 "Assets/Scripts/FireTeamSelections.cs"
 "Assets/Scripts/KillTeam.cs"
 "Assets/Scripts/MouseController.cs"
+"Assets/Scripts/Unit.cs"
 -langversion:9.0
 
 /deterministic
