@@ -23,6 +23,7 @@ public class FireTeam : MonoBehaviour
     {
         FireTeamSelections.Instance.fireTeamList.Add(gameObject);
         cover = GetComponent<FireTeamCover>();
+
     }
 
     private void OnDestroy()
@@ -59,16 +60,20 @@ public class FireTeam : MonoBehaviour
         }
     }
 
-    private void Die()
+    void Die()
     {
         if (isDead) return;
 
         isDead = true;
+        Destroy(gameObject, 0.3f);
         GetComponent<Animator>().SetTrigger("die");
         GetComponent<FireTeamAttack>().enabled = false;
-
+        GetComponent<FireTeamMovement>().enabled = false;
+        FireTeamSelections.Instance.fireTeamList.Remove(gameObject);
+        FireTeamSelections.Instance.fireTeamsSelected.Remove(gameObject);
+        transform.GetChild(0).gameObject.SetActive(false);
         // send morale penaly, TOOD: unitfactor type property?
-        // SendMessageUpwards("FireTeamKilled", 10);
+        SendMessageUpwards("FireTeamKilled", 10);
     }
 }
 

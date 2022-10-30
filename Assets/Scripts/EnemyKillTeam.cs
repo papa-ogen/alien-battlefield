@@ -51,7 +51,10 @@ public class EnemyKillTeam : MonoBehaviour
 
         foreach (EnemyFireTeam enemyFireTeam in enemyFireTeams)
         {
-            killTeamText.text += enemyFireTeam.name + " (" + enemyFireTeam.HitPoints + ")\n";
+            if(enemyFireTeam != null)
+            {
+                killTeamText.text += enemyFireTeam.name + " (" + enemyFireTeam.HitPoints + ")\n";
+            }
         }
 
     }
@@ -59,5 +62,10 @@ public class EnemyKillTeam : MonoBehaviour
     private void DisplayMorale()
     {
         moraleText.text = "Morale: " + morale.ToString();
+    }
+
+    void EnemyFireTeamKilled(int moralePenalty)
+    {
+        morale -= moralePenalty;
     }
 }

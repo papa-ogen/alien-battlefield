@@ -357,6 +357,7 @@
 "Assets/Scripts/CoverType.cs"
 "Assets/Scripts/EnemyFireTeam.cs"
 "Assets/Scripts/EnemyFireTeamAttack.cs"
+"Assets/Scripts/EnemyFireTeamMovement.cs"
 "Assets/Scripts/EnemyKillTeam.cs"
 "Assets/Scripts/FireTeam.cs"
 "Assets/Scripts/FireTeamAttack.cs"

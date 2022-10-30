@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - Cover
     - EnemyFireTeam
     - EnemyFireTeamAttack
+    - EnemyFireTeamMovement
     - EnemyKillTeam
     - FireTeam
     - FireTeamAttack
@@ -86,7 +87,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
   methodsToPreserve: []
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/Sandbox.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -116,6 +117,8 @@ ScriptsOnlyBuild:
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
       Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
@@ -152,33 +155,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6006}
     - Class: 114
-      Script: {instanceID: 6404}
+      Script: {instanceID: 6048}
     - Class: 114
-      Script: {instanceID: 6574}
+      Script: {instanceID: 6406}
     - Class: 114
-      Script: {instanceID: 6590}
+      Script: {instanceID: 6576}
     - Class: 114
-      Script: {instanceID: 6612}
+      Script: {instanceID: 6592}
     - Class: 114
-      Script: {instanceID: 6832}
+      Script: {instanceID: 6614}
     - Class: 114
-      Script: {instanceID: 6844}
+      Script: {instanceID: 6818}
     - Class: 114
-      Script: {instanceID: 6988}
+      Script: {instanceID: 6836}
     - Class: 114
-      Script: {instanceID: 7412}
+      Script: {instanceID: 6848}
     - Class: 114
-      Script: {instanceID: 7514}
+      Script: {instanceID: 6992}
     - Class: 114
-      Script: {instanceID: 7858}
+      Script: {instanceID: 7416}
     - Class: 114
-      Script: {instanceID: 8222}
+      Script: {instanceID: 7518}
     - Class: 114
-      Script: {instanceID: 8564}
+      Script: {instanceID: 7862}
     - Class: 114
-      Script: {instanceID: 8882}
+      Script: {instanceID: 8226}
     - Class: 114
-      Script: {instanceID: 105752}
+      Script: {instanceID: 8568}
+    - Class: 114
+      Script: {instanceID: 8886}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -936,6 +941,12 @@ ScriptsOnlyBuild:
     className: UnityOnDeselectMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FireTeamCover
+  - hash:
+      serializedVersion: 2
       Hash: d85b490177c3124d2335460060a2b807
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem.Editor
@@ -1014,7 +1025,13 @@ ScriptsOnlyBuild:
     className: UnityOnMouseUpAsButtonMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 994df660977cb4ad8745489d1b64fb26
+      Hash: 131f425607820796717868b02ff18299
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyFireTeamMovement
+  - hash:
+      serializedVersion: 2
+      Hash: dde938b0e92c2ef961385a1c563b9db5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FireTeamAttack
@@ -1044,7 +1061,7 @@ ScriptsOnlyBuild:
     className: Scrollbar
   - hash:
       serializedVersion: 2
-      Hash: 70f5786a85924267addc917d73af3c3e
+      Hash: 15ee99a3815ef722bf6975c304a236c7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyFireTeam
@@ -1456,13 +1473,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FireTeamCover
   platform: 2
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
+  - Assets/Scenes/Sandbox.unity
   playerPath: /Users/jorgenthelin/Unity 3D/builds/week2 - Alien Battlefield.app

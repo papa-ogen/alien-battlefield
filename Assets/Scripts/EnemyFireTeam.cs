@@ -140,8 +140,10 @@ public class EnemyFireTeam : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
+        Destroy(gameObject, 0.3f);
         GetComponent<Animator>().SetTrigger("die");
         GetComponent<EnemyFireTeamAttack>().enabled = false;
+        SendMessageUpwards("EnemyFireTeamKilled", 10);
     }
 
     void LookForCover()
