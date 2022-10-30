@@ -20,7 +20,10 @@ public class EnemyFireTeamAttack : MonoBehaviour
 
     void Update()
     {
-        StartCoroutine(Attack());
+        if(targetEnemy && canAttack)
+        {
+            StartCoroutine(Attack());
+        }
     }
 
     IEnumerator Attack()

@@ -20,7 +20,7 @@ public class FireTeamAttack : MonoBehaviour
         {
             LookForEnemies();
         }
-        else if (targetEnemy.IsDead)
+        else if (targetEnemy.IsDead || Vector3.Distance(transform.position, targetEnemy.transform.position) > attackRange) 
         {
             targetEnemy = null;
         }

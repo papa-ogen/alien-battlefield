@@ -27,9 +27,25 @@ public class EnemyFireTeam : MonoBehaviour
 
     private void Update()
     {
-        LookForCover();
-        LookForEnemies();
+        if (isDead) return;
 
+        LookForCover();
+
+        if (targetEnemy == null)
+        {
+            LookForEnemies();
+            GetComponent<EnemyFireTeamAttack>().enabled = false;
+        }
+        else if (targetEnemy.IsDead || Vector3.Distance(transform.position, targetEnemy.transform.position) > scoutRange)
+        {
+            targetEnemy = null;
+            GetComponent<EnemyFireTeamAttack>().enabled = false;
+        }
+        else 
+        {
+            Attack();
+        }
+        /*
         if (targetEnemy == null)
         {
             if(cover == CoverType.None)
@@ -52,7 +68,7 @@ public class EnemyFireTeam : MonoBehaviour
         }
 
         // TODO : Passive AI
-        /* if no enemy
+         if no enemy
          * 1. Look For Cover
          * 2 If Cover, IDLE
          * 3. If No cover, move "forward
@@ -62,18 +78,18 @@ public class EnemyFireTeam : MonoBehaviour
          * If no cover, look for cover
          * If no cover, move away from enemy
          * 
-        */
+        
         if(cover != CoverType.None)
         {
             GetComponent<EnemyFireTeamMovement>().enabled = false;
         }
-
+        */
     }
 
     private void Attack()
     {
         Debug.Log("Attacking");
-        GetComponent<Animator>().SetBool("attack", false);
+        GetComponent<Animator>().SetBool("attack", true);
         GetComponent<EnemyFireTeamAttack>().enabled = true;
     }
 
@@ -88,6 +104,8 @@ public class EnemyFireTeam : MonoBehaviour
 
     private void Retreat()
     {
+        targetEnemy = null;
+
         GetComponent<Animator>().SetBool("move", false);
         GetComponent<EnemyFireTeamMovement>().enabled = true;
         GetComponent<EnemyFireTeamMovement>().Advancing = false;

@@ -79,11 +79,13 @@
     <Compile Include="Assets/Scripts/KillTeam.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/ExplosionFireAndDebris.cs" />
     <Compile Include="Assets/Scripts/FireTeam.cs" />
+    <Compile Include="Assets/Scripts/FireTeamCover.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/SmoothFollow.cs" />
     <Compile Include="Assets/Scripts/EnemyKillTeam.cs" />
     <Compile Include="Assets/Scripts/Cover.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/WaypointCircuit.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/TimedObjectDestructor.cs" />
+    <Compile Include="Assets/Scripts/EnemyFireTeamMovement.cs" />
     <Compile Include="Assets/Scripts/FireTeamAttack.cs" />
     <Compile Include="Assets/Scripts/CameraController.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/WaterTile.cs" />
@@ -113,8 +115,6 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/Water.cs" />
     <Compile Include="Assets/Scripts/Unit.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/Hose.cs" />
-    <Compile Include="Assets/Scripts/FireTeamCover.cs" />
-    <Compile Include="Assets/Scripts/EnemyFireTeamMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Extra Assets/Standard Assets/Prototyping/Shaders/WorldCoordDiffuse.shader" />
