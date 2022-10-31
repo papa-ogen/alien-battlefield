@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
+using Unity.VisualScripting;
 
 public class Building : MonoBehaviour
 {
@@ -10,6 +13,8 @@ public class Building : MonoBehaviour
 
     Color startcolor;
     Material child;
+    TextMeshPro enterExitText;
+    TextMeshPro instructionsText;
 
     private void Awake()
     {
@@ -19,7 +24,13 @@ public class Building : MonoBehaviour
 
     private void Start()
     {
-        foreach(GameObject occupant in occupants)
+        enterExitText = GetComponentsInChildren<TextMeshPro>()[0];
+        enterExitText.enabled = false;
+
+        instructionsText = GetComponentsInChildren<TextMeshPro>()[1];
+        instructionsText.enabled = false;
+
+        foreach (GameObject occupant in occupants)
         {
             occupant.SetActive(false);
         }
@@ -29,17 +40,73 @@ public class Building : MonoBehaviour
     {
         List<GameObject> selectedFireTeams = FireTeamSelections.Instance.fireTeamsSelected;
 
-        // TODO: add fire teams to building, if user gives fire teams new orders. take care of that...
-
-        if(selectedFireTeams.Count > 0)
+        if(Input.GetMouseButtonDown(0))
         {
-            child.color = Color.yellow;
+            StartCoroutine(LeaveBuilding());
         }
+
+        if (occupants.Count == size)
+        {
+            DisplayText("Building Full", "(left click to empty)");
+            child.color = Color.red;
+        } else if (selectedFireTeams.Count > 0)
+        {
+            DisplayText("Enter Building", "(right click to enter)");
+            child.color = Color.yellow;
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                // TODO: add fire teams to building, if user gives fire teams new orders. take care of that... Only add available size
+                // TODO: shoot from building
+                // enter building
+                Debug.Log("Enter");
+            }
+        }
+    }
+
+    IEnumerator LeaveBuilding()
+    {
+        Vector3 offset = new Vector3(-5, 0 , -10);
+        foreach(GameObject occupant in occupants)
+        {
+            occupant.SetActive(true);
+
+            occupant.transform.position = gameObject.transform.position - offset;
+            offset = new Vector3(0, 0, 5) + offset;
+
+            yield return new WaitForSeconds(1);
+        }
+
+        occupants.Clear();
     }
 
     private void OnMouseExit()
     {
         child.color = startcolor;
+
+        HideText();
+    }
+
+    private void HideText()
+    {
+        enterExitText.enabled = false;
+        instructionsText.enabled = false;
+    }
+
+    void DisplayText(string enterExitText, string instructionsText)
+    {
+        if (this.enterExitText == null) return;
+
+        this.enterExitText.text = enterExitText;
+        this.enterExitText.enabled = true;
+
+        if (this.instructionsText == null) return;
+
+        this.instructionsText.text = instructionsText;
+        this.instructionsText.enabled = true;
+
+        // TODO: Look at camera
+        // enterExitText.transform.LookAt(Camera.main.transform);
     }
 
 }

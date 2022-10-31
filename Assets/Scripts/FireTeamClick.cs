@@ -63,8 +63,11 @@ public class FireTeamClick : MonoBehaviour
 
         foreach (GameObject fireTeam in fireTeams)
         {
-            FireTeamMovement ftm = fireTeam.GetComponent<FireTeamMovement>();
-            if (ftm.enabled) return;
+            if(fireTeam.activeSelf)
+            {
+                FireTeamMovement ftm = fireTeam.GetComponent<FireTeamMovement>();
+                if (ftm.enabled) return;
+            }
         }
 
         groundMarker.SetActive(false);
