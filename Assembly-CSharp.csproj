@@ -67,6 +67,7 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/ExplosionPhysicsForce.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/PlanarReflection.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/TimedObjectActivator.cs" />
+    <Compile Include="Assets/Scripts/Building.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water (Basic)/Scripts/WaterBasic.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/Utility/CameraRefocus.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/SmokeParticles.cs" />
@@ -158,6 +159,7 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
     <None Include="Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
+    <None Include="Assets/Shaders/Outline.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" />
     <None Include="Assets/Extra Assets/Standard Assets/Fonts/OpenSans/License!.txt" />
   </ItemGroup>
