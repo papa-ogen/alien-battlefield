@@ -6,18 +6,15 @@ using UnityEngine.AI;
 using System;
 using static UnityStandardAssets.Utility.TimedObjectActivator;
 
-public class EnemyFireTeam : MonoBehaviour
+public class EnemyFireTeam : IFireTeam
 {
-    [SerializeField] int hitPoints = 100;
-    public float HitPoints { get { return hitPoints; } }    
+    int hitPoints = 100;
     [SerializeField] CoverType cover;
     [SerializeField] float scoutRange = 30f;
 
     bool isDead = false;
-    public bool IsDead { get { return isDead; } }
 
     bool isHidden = false;
-    public bool IsHidden { get { return isHidden; } }
 
     Cover[] covers;
     FireTeam[] enemies;
@@ -114,7 +111,7 @@ public class EnemyFireTeam : MonoBehaviour
         // if cover found, move towards cover
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         if (cover == CoverType.LightCover)
         {
@@ -135,7 +132,7 @@ public class EnemyFireTeam : MonoBehaviour
         }
     }
 
-    private void Die()
+    protected override void Die()
     {
         if (isDead) return;
 

@@ -4,18 +4,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FireTeam : MonoBehaviour
+public class FireTeam : IFireTeam
 {
     bool isSelected = false;
     public bool IsSelected { get { return isSelected; } }
 
-    [SerializeField] int hitPoints = 100;
-    public int HitPoints { get { return hitPoints; } }
+    int hitPoints = 100;
 
     bool isDead = false;
-    public bool IsDead { get { return isDead; } }
     bool isHidden = false;
-    public bool IsHidden { get { return isHidden; } }
 
     FireTeamCover cover;
 
@@ -41,7 +38,7 @@ public class FireTeam : MonoBehaviour
         isSelected = false;
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         if(cover.Cover == CoverType.LightCover)
         {
@@ -60,7 +57,7 @@ public class FireTeam : MonoBehaviour
         }
     }
 
-    void Die()
+    protected override void Die()
     {
         if (isDead) return;
 

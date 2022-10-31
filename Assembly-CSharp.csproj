@@ -116,6 +116,7 @@
     <Compile Include="Assets/Extra Assets/Standard Assets/Environment/Water/Water/Scripts/Water.cs" />
     <Compile Include="Assets/Scripts/Unit.cs" />
     <Compile Include="Assets/Extra Assets/Standard Assets/ParticleSystems/Scripts/Hose.cs" />
+    <Compile Include="Assets/Scripts/IFireTeam.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Extra Assets/Standard Assets/Prototyping/Shaders/WorldCoordDiffuse.shader" />

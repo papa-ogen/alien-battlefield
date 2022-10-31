@@ -411,6 +411,7 @@
 "Assets/Scripts/FireTeamDrag.cs"
 "Assets/Scripts/FireTeamMovement.cs"
 "Assets/Scripts/FireTeamSelections.cs"
+"Assets/Scripts/IFireTeam.cs"
 "Assets/Scripts/KillTeam.cs"
 "Assets/Scripts/MouseController.cs"
 "Assets/Scripts/Unit.cs"

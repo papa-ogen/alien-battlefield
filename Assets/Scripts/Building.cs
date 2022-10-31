@@ -30,10 +30,7 @@ public class Building : MonoBehaviour
         instructionsText = GetComponentsInChildren<TextMeshPro>()[1];
         instructionsText.enabled = false;
 
-        foreach (GameObject occupant in occupants)
-        {
-            occupant.SetActive(false);
-        }
+        AssignOccupants();
     }
 
     private void OnMouseOver()
@@ -107,6 +104,17 @@ public class Building : MonoBehaviour
 
         // TODO: Look at camera
         // enterExitText.transform.LookAt(Camera.main.transform);
+    }
+
+    void AssignOccupants()
+    {
+        if (occupants == null) return;
+
+        foreach (GameObject occupant in occupants)
+        {
+            // TODO: just hide mesh and move to house
+            occupant.SetActive(false);
+        }
     }
 
 }
