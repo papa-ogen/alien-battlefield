@@ -5,7 +5,8 @@ using UnityEngine;
 public class FireTeamCover : MonoBehaviour
 {
     CoverType cover = CoverType.None;
-    public CoverType Cover { get { return cover; } }
+    public CoverType Cover { get { return cover; } set { cover = value; } }
+
     Cover[] covers;
 
     private void Update()

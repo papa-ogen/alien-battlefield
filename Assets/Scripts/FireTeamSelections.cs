@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class FireTeamSelections : MonoBehaviour
 {
-    public List<GameObject> fireTeamList = new List<GameObject>();
-    public List<GameObject> fireTeamsSelected = new List<GameObject>();
+    public List<FireTeam> fireTeamList = new List<FireTeam>();
+    public List<FireTeam> fireTeamsSelected = new List<FireTeam>();
 
     private static FireTeamSelections _instance;
     public static FireTeamSelections Instance { get { return _instance;  } }
@@ -21,7 +21,7 @@ public class FireTeamSelections : MonoBehaviour
         }
     }
 
-    public void ClickSelect(GameObject fireTeamToAdd)
+    public void ClickSelect(FireTeam fireTeamToAdd)
     {
         DeSelectAll();
         fireTeamsSelected.Add(fireTeamToAdd);
@@ -29,7 +29,7 @@ public class FireTeamSelections : MonoBehaviour
         fireTeamToAdd.GetComponent<FireTeamMovement>().enabled = true;
     }
 
-    public void ShiftClickSelect(GameObject fireTeamToAdd)
+    public void ShiftClickSelect(FireTeam fireTeamToAdd)
     {
         if(!fireTeamsSelected.Contains(fireTeamToAdd))
         {
@@ -45,7 +45,7 @@ public class FireTeamSelections : MonoBehaviour
         }
     }
 
-    public void DragSelect(GameObject fireTeamToAdd)
+    public void DragSelect(FireTeam fireTeamToAdd)
     {
         if(!fireTeamsSelected.Contains(fireTeamToAdd))
         {
@@ -57,7 +57,7 @@ public class FireTeamSelections : MonoBehaviour
 
     public void DeSelectAll()
     {
-        foreach (GameObject fireTeam in fireTeamsSelected)
+        foreach (FireTeam fireTeam in fireTeamsSelected)
         {
             fireTeam.transform.GetChild(0).gameObject.SetActive(false);
             fireTeam.GetComponent<FireTeamMovement>().enabled = false;

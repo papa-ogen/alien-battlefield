@@ -90,7 +90,7 @@ public class FireTeamDrag : MonoBehaviour
 
     void SelectFireTeams()
     {
-        foreach(GameObject fireTeam in FireTeamSelections.Instance.fireTeamList)
+        foreach(FireTeam fireTeam in FireTeamSelections.Instance.fireTeamList)
         {
             if(selectionBox.Contains(myCam.WorldToScreenPoint(fireTeam.transform.position)))
             {

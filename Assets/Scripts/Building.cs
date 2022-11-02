@@ -4,12 +4,13 @@ using UnityEngine;
 using TMPro;
 using System;
 using Unity.VisualScripting;
+using static UnityStandardAssets.Utility.TimedObjectActivator;
 
 public class Building : MonoBehaviour
 {
     [SerializeField] int size = 3;
     [SerializeField] CoverType cover = CoverType.HardCover;
-    [SerializeField] List<GameObject> occupants;
+    [SerializeField] List<FireTeam> occupants;
 
     Color startcolor;
     Material child;
@@ -35,7 +36,7 @@ public class Building : MonoBehaviour
 
     private void OnMouseOver()
     {
-        List<GameObject> selectedFireTeams = FireTeamSelections.Instance.fireTeamsSelected;
+        List<FireTeam> selectedFireTeams = FireTeamSelections.Instance.fireTeamsSelected;
 
         if(Input.GetMouseButtonDown(0))
         {
@@ -53,28 +54,10 @@ public class Building : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1))
             {
-                // TODO: add fire teams to building, if user gives fire teams new orders. take care of that... Only add available size
-                // TODO: shoot from building
-                // enter building
-                Debug.Log("Enter");
+
+                EnterBuilding(selectedFireTeams);
             }
         }
-    }
-
-    IEnumerator LeaveBuilding()
-    {
-        Vector3 offset = new Vector3(-5, 0 , -10);
-        foreach(GameObject occupant in occupants)
-        {
-            occupant.SetActive(true);
-
-            occupant.transform.position = gameObject.transform.position - offset;
-            offset = new Vector3(0, 0, 5) + offset;
-
-            yield return new WaitForSeconds(1);
-        }
-
-        occupants.Clear();
     }
 
     private void OnMouseExit()
@@ -108,13 +91,39 @@ public class Building : MonoBehaviour
 
     void AssignOccupants()
     {
-        if (occupants == null) return;
-
-        foreach (GameObject occupant in occupants)
+        foreach (FireTeam occupant in occupants)
         {
-            // TODO: just hide mesh and move to house
-            occupant.SetActive(false);
+            occupant.transform.position = transform.position;
+            occupant.Cover.Cover = CoverType.HardCover;
         }
     }
 
+    IEnumerator LeaveBuilding()
+    {
+        Vector3 offset = new Vector3(-5, 0, -10);
+        foreach (FireTeam occupant in occupants)
+        {
+            occupant.transform.position = gameObject.transform.position - offset;
+            offset = new Vector3(0, 0, 5) + offset;
+
+            occupants.Remove(occupant);
+
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    private void EnterBuilding(List<FireTeam> selectedFireTeams)
+    {
+        foreach (FireTeam selectedFireTeam in selectedFireTeams)
+        {
+            float distanceToTarget = Vector3.Distance(transform.position, selectedFireTeam.transform.position);
+
+            if (distanceToTarget <= 10f)
+            {
+                selectedFireTeam.transform.position = transform.position;
+                selectedFireTeam.Cover.Cover = CoverType.HardCover;
+                occupants.Add(selectedFireTeam);
+            }
+        }
+    }
 }

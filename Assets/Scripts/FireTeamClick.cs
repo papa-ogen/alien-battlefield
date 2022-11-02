@@ -23,13 +23,15 @@ public class FireTeamClick : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit, Mathf.Infinity, clickable))
             {
+                FireTeam fireTeam = hit.collider.gameObject.GetComponent<FireTeam>();
+
                 if(Input.GetKey(KeyCode.LeftShift))
                 {
-                    FireTeamSelections.Instance.ShiftClickSelect(hit.collider.gameObject);
+                    FireTeamSelections.Instance.ShiftClickSelect(fireTeam);
                 }
                 else
                 {
-                    FireTeamSelections.Instance.ClickSelect(hit.collider.gameObject);
+                    FireTeamSelections.Instance.ClickSelect(fireTeam);
                 }
             }
             else
@@ -59,11 +61,11 @@ public class FireTeamClick : MonoBehaviour
 
     void IsFireTeamMoving()
     {
-        List<GameObject> fireTeams = FireTeamSelections.Instance.fireTeamList;
+        List<FireTeam> fireTeams = FireTeamSelections.Instance.fireTeamList;
 
-        foreach (GameObject fireTeam in fireTeams)
+        foreach (FireTeam fireTeam in fireTeams)
         {
-            if(fireTeam.activeSelf)
+            if(fireTeam.gameObject.activeSelf)
             {
                 FireTeamMovement ftm = fireTeam.GetComponent<FireTeamMovement>();
                 if (ftm.enabled) return;

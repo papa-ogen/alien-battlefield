@@ -15,17 +15,18 @@ public class FireTeam : IFireTeam
     bool isHidden = false;
 
     FireTeamCover cover;
+    public FireTeamCover Cover { get { return cover; } set { cover = value;  } }
 
     private void Start()
     {
-        FireTeamSelections.Instance.fireTeamList.Add(gameObject);
+        FireTeamSelections.Instance.fireTeamList.Add(this);
         cover = GetComponent<FireTeamCover>();
 
     }
 
     private void OnDestroy()
     {
-        FireTeamSelections.Instance.fireTeamList.Remove(gameObject);
+        FireTeamSelections.Instance.fireTeamList.Remove(this);
     }
 
     public void SelectFireTeam()
@@ -66,8 +67,8 @@ public class FireTeam : IFireTeam
         GetComponent<Animator>().SetTrigger("die");
         GetComponent<FireTeamAttack>().enabled = false;
         GetComponent<FireTeamMovement>().enabled = false;
-        FireTeamSelections.Instance.fireTeamList.Remove(gameObject);
-        FireTeamSelections.Instance.fireTeamsSelected.Remove(gameObject);
+        FireTeamSelections.Instance.fireTeamList.Remove(this);
+        FireTeamSelections.Instance.fireTeamsSelected.Remove(this);
         transform.GetChild(0).gameObject.SetActive(false);
         // send morale penaly, TOOD: unitfactor type property?
         SendMessageUpwards("FireTeamKilled", 10);
